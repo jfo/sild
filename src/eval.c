@@ -4,6 +4,7 @@
 #include "cell.h"
 #include "env.h"
 #include "eval.h"
+#include "util.h"
 
 /* ---------- */
 /* eval/apply */
@@ -81,6 +82,7 @@ static C *apply(C* c, Env *env) {
             fprintf(stderr, "\nError: attempted to evaluate an empty list: ()\n");
             exit(1);
     }
+    unreachable();
 }
 
 C *eval(C* c, Env *env) {
@@ -110,5 +112,6 @@ C *eval(C* c, Env *env) {
         case NIL:
             return c;
     }
+    unreachable();
 }
 

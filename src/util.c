@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 /* ----------*/
 /* utilities */
@@ -30,3 +31,9 @@ char *scpy(char *s) {
     out[l] = '\0';
     return out;
 };
+
+void unreachable() {
+    fprintf(stderr, "unreachable\n");
+    abort();
+}
+

@@ -93,6 +93,7 @@ C *copy_cell(C *c) {
         case NIL:
             return &nil;
     }
+    unreachable();
 }
 
 C *copy_one_cell(C *c) {
@@ -110,6 +111,7 @@ C *copy_one_cell(C *c) {
         case NIL:
             return &nil;
     }
+    unreachable();
 }
 
 C nil = { NIL, (V){ .list = NULL }, NULL };
