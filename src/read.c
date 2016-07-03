@@ -119,11 +119,11 @@ static C * read_inner(FILE *s, int depth) {
         case '\'':
             return quote_next(s, depth);
         case '(':
-            return makecell(
-                    LIST,
-                    (V){.list = read_inner(s, depth + 1)},
-                    (depth > 0 ? read_inner(s, depth) : &nil)
-                    );
+            {
+                V val = (V){.list = read_inner(s, depth + 1)};
+                C *next= (depth > 0 ? read_inner(s, depth) : &nil);
+                return makecell(LIST, val, next);
+            }
         default:
             fseek(s, -1, SEEK_CUR);
             return categorize(s, depth);
