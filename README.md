@@ -20,10 +20,10 @@ a [disaster](https://github.com/urthbound/risp)! The [second
 ](https://github.com/urthbound/sildold) I got working pretty well! But then I
 tried to explain it to someone and completely couldn't, so I threw it all out
 and started over for a 3rd time, making really atomic commits and
-writing blog posts about the whole thing as I was developing it. Those posts will
-be appearing here in the coming weeks:
+writing blog posts about the whole thing as I was developing it. Those posts
+currently live here:
 
-[blog.jfo.click](blog.jfo.click)
+[blog.jfo.click](http://blog.jfo.click)
 
 Sild could best be described as a busted scheme-like lisp. I did not attempt to
 achieve compliance with any [existing standard](http://www.r6rs.org/), but in
