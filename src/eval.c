@@ -71,9 +71,9 @@ static C *apply(C* c, Env *env) {
                 return out;
             }
         case LIST:
+        case LABEL:
             return apply(eval(c, env), env);
         case TRUTH:
-        case LABEL:
             fprintf(stderr, "\nError: attempted to apply non-procedure %s\n", c->val.label);
             exit(1);
         case PROC:
