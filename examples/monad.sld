@@ -1,32 +1,30 @@
-(define return
+(define unit
  (lambda (x)
-  (cons x '(hello_monad))))
+  (cons x '(hello_monads))))
 
-(define >>=
+(define bind
  (lambda (f Mx)
    (f (car Mx))))
 
-(define >>
- (lambda (fns Mx)
-  (cond (eq fns '()) Mx
-        (>> (cdr fns)
-            (return (>>= (car fns)
-                    Mx))))))
+(define push_a (lambda (x) (unit (cons 'a x))))
+(define push_b (lambda (x) (unit (cons 'b x))))
+(define push_c (lambda (x) (unit (cons 'c x))))
+(define pop    (lambda (x) (unit (cdr x))))
 
-(define y '(| | |))
-(define My (return y))
+(define compose (lambda (g f)
+  (lambda (m) (bind f (bind g m)))))
+
+(define y '(a b c))
+(define My (unit y ))
 
 ; left identity
-(display (>>= car My)) ; |
-(display (car y))      ; |
+(display (bind pop My))
+(display (pop y))
 
 ; right identity
-(display (>>= return My)) ; ((| | |) hello_monad)
-(display My)              ; ((| | |) hello_monad)
+(display (bind unit My))
+(display My)
 
 ; associativity
-(define addone (lambda (x) (cons '| x)))                    ; ((| | | | | | |) hello_monad)
-(define addthree (lambda (x) (addone (addone (addone x))))) ; ((| | | | | | |) hello_monad)
-
-(display (>> '(addone addthree) My))
-(display (>> '(addthree addone) My))
+(display (bind push_c ((compose push_a push_b) My)))
+(display ((compose push_b push_c) (bind push_a My)))
