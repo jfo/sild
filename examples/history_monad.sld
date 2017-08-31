@@ -34,13 +34,13 @@
 (define My (unit y))
 
 ; left identity
-(display (bind pop My))
-(display (pop y))
+(display (bind pop My))  ; ((b c) (pop))
+(display (pop y))        ; ((b c) (pop))
 
 ; right identity
-(display My)
-(display (bind unit My))
+(display My)             ; ((a b c) ())
+(display (bind unit My)) ; ((a b c) ())
 
 ; associativity
-(display (bind push_c ((compose push_a pop) My)))
-(display ((compose pop push_c) (bind push_a My)))
+(display (bind push_c ((compose push_a pop) My))) ; ((c a b c) (push_c pop push_a))
+(display ((compose pop push_c) (bind push_a My))) ; ((c a b c) (push_c pop push_a))
