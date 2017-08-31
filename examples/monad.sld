@@ -26,5 +26,5 @@
 (display My)
 
 ; associativity
-(display (bind push_c ((compose push_a push_b) My)))
-(display ((compose push_b push_c) (bind push_a My)))
+(display (bind push_c ((compose push_a pop) My)))
+(display ((compose pop push_c) (bind push_a My)))
