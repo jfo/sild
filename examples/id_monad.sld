@@ -18,13 +18,14 @@
 (define My (unit y ))
 
 ; left identity
-(display (bind pop My))
-(display (pop y))
+(display (bind pop My))  ; ((b c) hello_monads)
+(display (pop y))        ; ((b c) hello_monads)
 
 ; right identity
-(display (bind unit My))
-(display My)
+(display (bind unit My)) ; ((a b c) hello_monads)
+(display My)             ; ((a b c) hello_monads)
 
 ; associativity
-(display (bind push_c ((compose push_a pop) My)))
-(display ((compose pop push_c) (bind push_a My)))
+(display (bind push_c ((compose push_a pop) My))) ; ((c a b c) hello_monads)
+(display ((compose pop push_c) (bind push_a My))) ; ((c a b c) hello_monads)
+
