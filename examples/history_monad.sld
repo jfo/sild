@@ -22,13 +22,14 @@
                                      (car (cdr mx)))
                                '()))))
 
+(define compose (lambda (g f)
+                  (lambda (m) (bind f (bind g m)))))
+
 (define push_a (lambda (x) (recorder (unit (cons 'a x)) 'push_a)))
 (define push_b (lambda (x) (recorder (unit (cons 'b x)) 'push_b)))
 (define push_c (lambda (x) (recorder (unit (cons 'c x)) 'push_c)))
 (define pop    (lambda (x) (recorder (unit (cdr x)) 'pop)))
 
-(define compose (lambda (g f)
-                  (lambda (m) (bind f (bind g m)))))
 
 (define y '(a b c))
 (define My (unit y))
@@ -44,3 +45,14 @@
 ; associativity
 (display (bind push_c ((compose push_a pop) My))) ; ((c a b c) (push_c pop push_a))
 (display ((compose pop push_c) (bind push_a My))) ; ((c a b c) (push_c pop push_a))
+
+(display (bind push_c
+            (bind pop
+                (bind pop
+                    (bind push_a
+                        (bind push_b
+                            (bind push_c
+                                (bind pop
+                                    (bind pop My)))))))))
+; ((c c c) (push_c pop pop push_a push_b push_c pop pop))
+
