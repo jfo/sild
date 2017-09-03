@@ -76,7 +76,7 @@
 ; returns a monad
 (def makepusher
   (λ (datum name)
-    (λ (l) (write-to-hist name (unit (cons sym l))))))
+    (λ (l) (write-to-hist name (unit (cons datum l))))))
 
 (def push-a (makepusher 'a 'push-a))
 (def push-b (makepusher 'b 'push-b))
