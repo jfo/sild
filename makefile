@@ -25,3 +25,6 @@ clean:
 
 run: debug
 	./sild
+
+install: sild
+	cp ./sild /usr/local/bin/
