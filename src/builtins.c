@@ -10,6 +10,7 @@
 /* builtin functions */
 /* ----------------- */
 
+
 static void arity_check(char *caller_name, int args, C *c) {
     C *cur = c;
     int passed_in = 0;
