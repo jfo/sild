@@ -1,5 +1,5 @@
 SHELL = /bin/sh
-CC = gcc
+CC = zig cc
 OBJDIR=obj
 vpath %.c src
 
@@ -21,7 +21,7 @@ $(OBJDIR):
 
 .PHONY: clean run
 clean:
-	rm -r sild sild.dSYM $(OBJDIR)
+	rm -r sild $(OBJDIR)
 
 run: debug
 	./sild
